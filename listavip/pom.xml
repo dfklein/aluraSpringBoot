@@ -1,0 +1,107 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>br.com.alura.listavip</groupId>
+	<artifactId>listavip</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+
+	<dependencies>
+		<!-- 
+			Esta é a dependência é o starter do SpringBoot. Ela já traz consigo uma série de bibliotecas
+			como as do Spring MVC, Hibernate, Embedded Tomcat, Log4j e outros. 
+			
+			A ideia do Spring Boot é trazer uma aplicação web com menos coisas para configurar porque
+			ela já assume uma série de configurações como padronizadas para aplicações SpringMVC.
+			
+			Quando você criou esta aplicação você apenas criou um projeto maven simples, adicionou 
+			esta dependência ao pom e criou a classe Configuracao.java. Ela possui uma anotação que
+			a classifica como uma classe de configuração e um método main que, ao ser rodado, já
+			sobe um Tomcat embutido na porta 8080. 
+		 -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+			<version>1.4.2.RELEASE</version>
+		</dependency>
+	
+		<!-- 
+			O thymeleaf é o framework de templates para front-end do Spring.
+			
+			Lembre-que no Spring Boot você adota o conceito de convenções sobre configurações. 
+			Para o caso do templates de front-end existe a convenção de que os arquivos do front
+			ficam dentro da pasta src/java/resources. Páginas ficam na subpasta ./template e
+			recursos de CSS e JS em ./static. O Spring Boot já sabe que é lá que ele vai
+			buscar suas páginas.
+			
+			Não é mais necessárias todas aquelas configurações para a servlet de entrada da aplicação
+			que você precisou fazer nos cursos anteriores de Spring.
+		 -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-thymeleaf</artifactId>
+			<version>1.4.2.RELEASE</version>
+		</dependency>
+		
+		<!-- 
+			DATASOURCE
+			
+			Abaixo as dependências do starter do Spring Boot Data JPA e o conector MySQL.
+			
+			Ele tem um monte de métodos já impementados por padrão. Vale a pena olhar a documentação:
+			
+			https://docs.spring.io/spring-data/data-commons/docs/1.6.1.RELEASE/reference/html/repositories.html
+			
+		 -->
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-jpa</artifactId>
+			<version>1.4.2.RELEASE</version>
+		</dependency>
+	
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>5.1.40</version>
+		</dependency>
+		
+		<!-- 
+			O Devtools é a ferramenta de hot deploy do Spring. Ele reinicia o servidor toda vez que
+			você altera o código fonte. Inclusive você pode instalar o plugin do live reload no
+			navegador para criar um listener que atualiza a view também.
+			
+			Está comentado só porque eu não queria o servidor reiniciando o tempo todo durante o curso.
+		 -->
+		 <!-- 
+		<dependency>
+		    <groupId>org.springframework.boot</groupId>
+		    <artifactId>spring-boot-devtools</artifactId>
+		    <version>1.4.2.RELEASE</version>
+		</dependency>
+		-->
+		
+		<dependency>
+		    <groupId>br.com.alura.enviadordeemail</groupId>
+		    <artifactId>enviadordeemail</artifactId>
+		    <version>0.0.1-SNAPSHOT</version>
+		    <scope>runtime</scope>
+		</dependency>
+		
+	</dependencies>
+	
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.7.0</version>
+				<configuration>
+					<source>1.8</source>
+					<target>1.8</target>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>
